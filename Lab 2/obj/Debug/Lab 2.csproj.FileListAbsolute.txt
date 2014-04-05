@@ -1,0 +1,9 @@
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\bin\Debug\Lab 2.exe.config
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\bin\Debug\Lab 2.exe
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\bin\Debug\Lab 2.pdb
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\obj\Debug\Lab_2.Form1.resources
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\obj\Debug\Lab_2.Properties.Resources.resources
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\obj\Debug\Lab 2.csproj.GenerateResource.Cache
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\obj\Debug\Lab 2.exe
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\obj\Debug\Lab 2.pdb
+d:\moje dokumenty\visual studio 2013\Projects\BD2\Lab 2\obj\Debug\Lab 2.csprojResolveAssemblyReference.cache
