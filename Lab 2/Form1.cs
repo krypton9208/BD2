@@ -19,6 +19,7 @@ namespace Lab_2
         Bazadanych bt;
         Bazadanych Baza;
         bool StartedAddingRow = false;
+        
         public Form1()
         {
             InitializeComponent();
@@ -75,7 +76,7 @@ namespace Lab_2
                 comboBox1.Enabled = true;
                 button1.Text = "Rozłącz";
 
-                bt = new Bazadanych(@"DAMIAN\SQLS");
+                bt = new Bazadanych(@textBox1.Text);
                 foreach (var item in bt.GetBaseNames())
                 {
                     comboBox1.Items.Add(item.ToString());
@@ -143,10 +144,41 @@ namespace Lab_2
                 StartedAddingRow = false;
                 if (Baza.InsertRow(comboBox1.Text, label2.Text, dataGridView2.Rows[e.RowIndex])) MessageBox.Show("Row added successful");
             }
+            
         }
 
         private void dataGridView2_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+        private void dataGridView2_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            //var d = (sender as DataRow);
+            
+
+        }
+
+        private void dataGridView2_AllowUserToDeleteRowsChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView2_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            MessageBox.Show("Usunięto Wiersz: " +dataGridView2.Rows[e.Row.Index].Cells[0].Value.ToString());
+            Baza.RemoveByIndex(comboBox1.Text, label2.Text, dataGridView2.Rows[e.Row.Index].Cells[0].Value.ToString());
+            dataGridView2.DataSource = null;
+            
+            dataGridView2.Rows.Clear();
+            string[] t = new string[1];
+            t = Baza.GetTableNames();
+            dataGridView2.DataSource = Baza.GetTableData(t[0]);
             
         }
     }
@@ -245,6 +277,17 @@ namespace Lab_2
             }
         }
        
+        public bool RemoveByIndex( string BaseName, String TableName, string index)
+        {
+            using (SqlCommand comm = conn.CreateCommand())
+            {
+                comm.CommandText = "use " + @BaseName + " DELETE FROM  " + @TableName + " WHERE ID = " + @index;
+
+                comm.ExecuteNonQuery();
+                return true;
+            }
+            
+        }
         public bool InsertRow(string BaseName, string TableName, DataGridViewRow Data)
         {
             string[] columns = GetColumnNames(TableName, BaseName);
